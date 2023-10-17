@@ -1,11 +1,41 @@
 import './index.css';
-import React from 'react';
-import InputField from './components/InputField';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 
-export default function ButtonUsage() {
+import InputField from './components/todo/InputField';
+import Header from './components/Header';
+import School from './components/students/School';
+import Result from './components/students/Result';
+
+function App() {
   return (
     <>
-      <InputField />
+      <Header />
+      <Outlet />
     </>
   );
 }
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+    children: [
+      {
+        path: '/',
+        element: <InputField />,
+      },
+      {
+        path: '/school',
+        element: <School />,
+        children: [
+          {
+            path: ':rollNo',
+            element: <Result />,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+export default router;

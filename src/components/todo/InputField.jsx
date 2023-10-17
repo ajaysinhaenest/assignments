@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
 const InputField = () => {
-  const [btnDisabled,setBtnDisabled] =useState(false)
-  const [query,setQuery] =useState('')
+  const [btnDisabled, setBtnDisabled] = useState(false)
+  const [query, setQuery] = useState('')
   const [task, setTask] = useState([])
 
   const handleSubmit = () => {
     if (query !== "" && task.length < 5) {
         const oldTasks = [...task]
         const value = oldTasks.find((item,i)=> item.text === query)
-        // console.log(value)
+        console.log(value)
       if(value) return alert('Item already exist')
       setTask([...task, { id: task.length +1, text: query }])
       setQuery('')
@@ -26,7 +26,7 @@ const InputField = () => {
     const items = oldItems.filter((item, i) => {
       return item.id !== id
     } ) 
-    // console.log(items)
+    console.log(items)
     setTask(items)
   }
   
@@ -46,7 +46,8 @@ const InputField = () => {
               
       </form>
       {
-        task.length !== 0 && task?.map((item, i) => <div key={i} className='flex p-2 justify-between bg-gray-200 text-gray-700 font-medium' >
+        task.length !== 0 && task?.map((item, i) =>
+          <div key={i} className='flex p-2 justify-between bg-gray-200 text-gray-700 font-medium' >
           <div className='flex gap-3' >
             <p>{item.id}. </p>
             <p> {item.text}</p>
