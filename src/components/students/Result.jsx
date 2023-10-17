@@ -6,13 +6,13 @@ const Result = () => {
     // const [marks,setMarks] = useState([])
     const {rollNo
     } = useParams()
-    console.log(rollNo)
+    // console.log(rollNo)
     useEffect(() => {
         const studentResult = resultsDetails?.find((stu, i) => stu.rollNo === rollNo)
         setSingleStudent(studentResult)
 
     }, [rollNo])
-    console.log(singleStudent)
+    // console.log(singleStudent)
 
     return (
   <div className='flex justify-center' >
